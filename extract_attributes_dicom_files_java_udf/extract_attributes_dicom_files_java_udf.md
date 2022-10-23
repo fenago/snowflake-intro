@@ -1,7 +1,7 @@
 # Extract Attributes from DICOM Files using a Java UDF
 <!-- ------------------------ -->
 ## Overview 
-Duration: 1
+
 
 This Quickstart is designed to help you understand the capabilities included in Snowflake’s support for unstructured data and Snowpark. Although this guide is specific to processing DICOM files, you can apply this pattern of processing natively in Snowflake to many types of unstructured data. All source code for this guide can be found on [Github](https://github.com/Snowflake-Labs/sfquickstarts).
 
@@ -22,7 +22,7 @@ This Quickstart is designed to help you understand the capabilities included in 
 
 <!-- ------------------------ -->
 ## Prepare Your Environment
-Duration: 2
+
 
 If you haven't already, register for a [Snowflake free 30-day trial](https://trial.snowflake.com/).
 The Snowflake edition (Standard, Enterprise, Business Critical, e.g.), cloud provider (AWS, Azure, e.g.), and Region (US East, EU, e.g.) do not matter for this lab. We suggest you select the region which is physically closest to you and the Enterprise Edition, our most popular offering. After registering, you will receive an email with an activation link and your Snowflake account URL.
@@ -38,7 +38,7 @@ For this lab, you will use the latest Snowflake web interface, Snowsight.
 
 <!-- ------------------------ -->
 ## Access the Data
-Duration: 6
+
 
 Let’s start by accessing DICOM files from Snowflake. Snowflake supports two types of stages for storing data files used for loading and unloading:
 - [Internal](https://docs.snowflake.com/en/user-guide/data-load-overview.html#internal-stages) stages store the files internally within Snowflake.
@@ -76,7 +76,7 @@ You should now see an identical list of files from the S3 bucket. Make sure you 
 
 <!-- ------------------------ -->
 ## Extract Attributes from DICOM Files
-Duration: 10
+
 
 In this section, we want to extract attributes from the DICOM files. The entities extracted are going to be fields like manufacturer, patient position, and study date. The goal is to have these fields to enrich the file-level metadata for analytics.
 
@@ -240,7 +240,7 @@ select * from dicom_attributes;
 
 <!-- ------------------------ -->
 ## Conclusion
-Duration: 1
+
 
 Congratulations! You used Snowflake to extract attributes from DICOM files.
 

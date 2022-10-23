@@ -5,7 +5,7 @@
 
 ## Overview
 
-Duration: 2
+
 
 Welcome to Snowflake! This entry-level guide designed for database and data warehouse administrators and architects will help you navigate the Snowflake interface and introduce you to some of our core capabilities. [Sign up for a free 30-day trial of Snowflake](https://trial.snowflake.com) and follow along with this lab exercise. Once we cover the basics, you'll be ready to start processing your own data and diving into Snowflake's more advanced features like a pro.
 
@@ -34,7 +34,7 @@ This Snowflake Guide is available as a free, instructor-led Virtual Hands on Lab
 
 ## Prepare Your Lab Environment
 
-Duration: 2
+
 
 If you haven't already, register for a [Snowflake free 30-day trial](https://trial.snowflake.com). The rest of the sections in this lab assume you are using a new Snowflake account created by registering for a trial.
 
@@ -47,7 +47,7 @@ After registering, you will receive an email with an activation link and URL for
 
 ## The Snowflake ​User Interface & Lab Story
 
-Duration: 8
+
 
 Negative
 : **About the screenshots, sample code, and environment**
@@ -191,7 +191,7 @@ We will first load structured `.csv` data from rider transactions into Snowflake
 
 ## Preparing to Load Data
 
-Duration: 14
+
 
 Let's start by preparing to load the structured Citi Bike rider transaction data into Snowflake.
 
@@ -362,7 +362,7 @@ The file format created should be listed in the result:
 
 ## Loading Data
 
-Duration: 10
+
 
 In this section, we will use a virtual warehouse and the COPY command to initiate bulk loading of structured data into the Snowflake table we created in the last section.
 
@@ -504,7 +504,7 @@ Click the **Create Warehouse** button to create the warehouse.
 
 ## Working with Queries, the Results Cache, & Cloning
 
-Duration: 8
+
 
 In the previous exercises, we loaded data into two tables using Snowflake's COPY bulk loader command and the `COMPUTE_WH` virtual warehouse. Now we are going to take on the role of the analytics users at Citi Bike who need to query data in those tables using the worksheet and the second warehouse `ANALYTICS_WH`.
 
@@ -603,7 +603,7 @@ Click the three dots (**...**) in the left pane and select **Refresh**. Expand t
 
 ## Working with Semi-Structured Data, Views, & Joins
 
-Duration: 16
+
 
 Positive
 : This section requires loading additional data and, therefore, provides a review of data loading while also introducing loading semi-structured data.
@@ -796,7 +796,7 @@ The initial goal was to determine if there was any correlation between the numbe
 
 ## Using Time Travel
 
-Duration: 6
+
 
 Snowflake's powerful Time Travel feature enables accessing historical data, as well as the objects storing the data, at any point within a period of time. The default window is 24 hours and, if you are using Snowflake Enterprise Edition,   can be increased up to 90 days. Most data warehouses cannot offer this functionality, but - you guessed it - Snowflake makes it easy!
 
@@ -914,7 +914,7 @@ limit 20;
 
 ## Working with Roles, Account Admin, & Account Usage
 
-Duration: 8
+
 
 In this section, we will explore aspects of Snowflake's access control security model, such as creating a role and granting it specific permissions. We will also explore other usage of the ACCOUNTADMIN (Account Administrator) role, which was briefly introduced earlier in the lab.
 
@@ -1050,7 +1050,7 @@ For the next section, stay in the ACCOUNTADMIN role for the UI session.
 <!-- ------------------------ -->
 
 ## Sharing Data Securely & the Data Marketplace
-Duration:12
+
 
 Snowflake enables data access between accounts through the secure data sharing features. Shares are created by data providers and imported by data consumers, either through their own Snowflake account or a provisioned Snowflake Reader account. The consumer can be an external entity or a different internal business unit that is required to have its own unique Snowflake account.
 
@@ -1159,7 +1159,7 @@ To learn more about how to use the new worksheet interface, go to the [Snowsight
 <!-- ------------------------ -->
 
 ## Resetting Your Snowflake Environment
-Duration: 2
+
 
 If you would like to reset your environment by deleting all the objects created as part of this lab, run the SQL statements in a worksheet.
 
@@ -1189,7 +1189,7 @@ drop role if exists junior_dba;
 
 ## Conclusion & Next Steps
 
-Duration: 2
+
 
 Congratulations on completing this introductory lab exercise! You've mastered the Snowflake basics and are ready to apply these fundamentals to your own data. Be sure to reference this guide if you ever need a refresher.
 
