@@ -12,9 +12,7 @@ Those who have been using the Data Vault approach don’t need to change much ot
 
 ### Data Vault on Snowflake
 
-There have been numerous [blog posts](https://www.snowflake.com/blog/tips-for-optimizing-the-data-vault-architecture-on-snowflake/), user groups, and webinars over the last few years, discussing the best practices and customer success stories around implementing Data Vaults on Snowflake.  So the question now is how do you build a Data Vault on Snowflake that has real-time or near real-time data streaming into it.
-
-Luckily, streaming data is one of the [use-cases](https://www.snowflake.com/cloud-data-platform/) that Snowflake was built to support, so we have many features to help us achieve this goal. **This guide is an extended version of the [article](https://datavaultalliance.com/news/building-a-real-time-data-vault-in-snowflake/) posted on Data Vault Alliance website, now including practical steps to build an example of real-time Data Vault feed on Snowflake. Join us on simple-to-follow steps to see it in action.**
+Luckily, streaming data is one of the [use-cases] that Snowflake was built to support, so we have many features to help us achieve this goal. **This guide is an extended version of the [article](https://datavaultalliance.com/news/building-a-real-time-data-vault-in-snowflake/) posted on Data Vault Alliance website, now including practical steps to build an example of real-time Data Vault feed on Snowflake. Join us on simple-to-follow steps to see it in action.**
 
 ### Prerequisites
 * A Snowflake account. Existing or if you are not(yet) a Snowflake user, you can always get a [trial](https://trial.snowflake.com/) account
