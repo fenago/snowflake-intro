@@ -62,33 +62,15 @@ All notebooks will be fully self contained, meaning that all you need for proces
 
 ### Option 1:  Running Jupyter locally
 
-The following instructions show how to build a Notebook server using a Docker container.
+1. Clone the GitHub Lab [repo](https://github.com/fenago/snowpark_on_jupyter): 
 
-1. Download and install [Docker](https://docs.docker.com/get-docker/).
-2. Make sure your docker desktop application is up and running.
-3. Make sure you have at least 4GB of memory allocated to Docker:
-    ![Docker Memory](assets/docker_memory.png)
+`git clone https://github.com/fenago/snowpark_on_jupyter.git`
 
-4. Open your favorite terminal or command line tool / shell.
 
-5. Clone the GitHub Lab [repo](https://github.com/fenago/snowpark_on_jupyter): 
-        cd ~
-        mkdir DockerImages
+2. Starting your Local Jupyter environment
 
-        cd DockerImages
-        git clone https://github.com/fenago/snowpark_on_jupyter.git
 
-6. Build the Docker container (this may take a minute or two, depending on your network connection speed)
-
-        cd ~/DockerImages/sfguide_snowpark_on_jupyter/docker
-        docker build -t snowparklab .
-
-7. Starting your Local Jupyter environment
-
-    Type the following commands to start the Docker container and mount the snowparklab directory to the container. The command below assumes that you have cloned the git repo to ~/DockerImages/sfguide_snowpark_on_jupyter. Adjust the path if necessary. 
-
-        cd ~/DockerImages/sfguide_snowpark_on_jupyter
-        docker run -it --rm -p 8888:8888 -e JUPYTER_ENABLE_LAB=yes -v "$(pwd)":/home/jovyan/snowparklab --name snowparklab snowparklab
+    `jupyter lab`
 
     The output should be similar to the following
 
@@ -98,48 +80,12 @@ The following instructions show how to build a Notebook server using a Docker co
             http://162e383e431c:8888/lab?token=bdaead06c9944057a86f9d8a823cebad4ce66799d855be5d
             http://127.0.0.1:8888/lab?token=bdaead06c9944057a86f9d8a823cebad4ce66799d855be5d
 
-8. Start a browser session (Safari, Chrome, ...). Paste the line with the local host address (127.0.0.1) printed in **your shell window** into the browser status bar and update the port (8888) to **your port** in case you have changed the port in the step above.
+
+8. Start a browser session (Chrome, ...). Paste the line with the local host address (127.0.0.1) printed in **your shell window** into the browser status bar and update the port (8888) to **your port** in case you have changed the port in the step above.
 
 Positive
 :  Once you have completed this step, you can move on to the Setup Credentials Section.
 
-Negative
-:  Stopping your Docker lab environment
-    
-    Type the following command into a new shell window when you want to stop the tutorial. All changes/work will be saved on your local machine. 
-
-        docker stop snowparklab
-        
-
-
-
-
-### Option 2:  Running Jupyter in the AWS cloud
-
-In case you can't install docker on your local machine you could run the tutorial in AWS on an [AWS Notebook Instance](https://docs.aws.amazon.com/sagemaker/latest/dg/nbi.html).
-
-1. Create a Notebook instance
-
-   ![Create Notebook](assets/create_notebook.png)
-
-2. Create a Lifecycle Policy.
-
-   ![Create Policy](assets/create_lifecycle_policy.png)
-
-   Open the [lifecycle script](https://github.com/fenago/snowpark_on_jupyter/blob/main/docker/onstart) and paste its content into the editor window.
-    
-   Creating the Notebook takes about 8 minutes.
-
-3. Upload the tutorial folder (github repo zipfile)
-
-4. Unzip folder
-
-   Open the Launcher, start a termial window and run the command below (substitue <filename> with your filename.
-
-        unzip SageMaker/<filename> -d SageMaker/
-
-Positive
-:  After you have set up either your docker or your cloud based notebook environment you can proceed to the next section.
 
 <!-- ------------------------ -->
 ## Setup Credentials

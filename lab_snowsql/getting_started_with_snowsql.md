@@ -48,22 +48,11 @@ The Snowflake web interface has a lot to offer, but for now, we’ll just switch
 
 ### Download the SnowSQL Installer 
 
-SnowSQL can be downloaded and installed on Linux, Windows, or Mac. In this example, we’ll download the installer for macOS via the AWS endpoint. If you’re using a different OS or prefer other methods, check out all the ways to get SnowSQL [here].
+SnowSQL can be downloaded and installed on Linux, Windows, or Mac. Download the SnowSQL Installer for Windows from here:
 
-```console
-curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/​<bootstrap-version>/darwin_x86_4/snowsql-<snowsql-version>-darwin_x86_64.pkg
-```
+`https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/windows_x86_64/snowsql-1.2.21-windows_x86_64.msi`
 
-Specify `​<bootstrap-version>` and `<snowsql-version>`​ number within the cURL command.
 
-The example below is a cURL command to the AWS endpoint for a macOS to download the
-bootstrap version 1.2 and SnowSQL version 1.2.9.
-
-```console
-curl -O https://sfc-repo.snowflakecomputing.com/snowsql/bootstrap/1.2/darwin_x86_64/snowsql-1.2.9-darwin_x86_64.pkg​
-```
-
-![Snowflake_Download_Installer_image](assets/Snowflake_Download_Installer.png)
 
 ### Install SnowSQL Locally
 - Double-click the installer file and walk through the wizard prompts.
