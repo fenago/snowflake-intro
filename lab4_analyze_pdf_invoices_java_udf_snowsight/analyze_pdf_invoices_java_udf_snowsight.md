@@ -1,9 +1,9 @@
-# Analyze PDF Invoices using Java UDF and Snowsight
+# Lab 4: Analyze PDF Invoices using Java UDF and Snowsight
 <!-- ------------------------ -->
 ## Overview 
 
 
-This Quickstart is designed to help you understand the capabilities included in Snowflake’s support for unstructured data and Snowpark. Although this guide is specific to processing PDF files, you can apply this pattern of processing natively in Snowflake to many types of unstructured data. All source code for this guide can be found on [Github](https://github.com/fenago/snowflake-intro).
+This lab is designed to help you understand the capabilities included in Snowflake’s support for unstructured data and Snowpark. Although this guide is specific to processing PDF files, you can apply this pattern of processing natively in Snowflake to many types of unstructured data. All source code for this guide can be found on [Github](https://github.com/fenago/snowflake-intro).
 
 
 ### What You'll Need
@@ -42,7 +42,7 @@ Let’s start by loading the PDF invoices into Snowflake. Snowflake supports two
 - [Internal] stages store the files internally within Snowflake.
 - [External] stages store the files in an external location (i.e. S3 bucket) that is referenced by the stage. An external stage specifies location and credential information, if required, for the bucket.
 
-For this quickstart, we will use an external stage, but processing and analysis workflows demonstrated in this quickstart can also be done using an internal stage.
+For this lab, we will use an external stage, but processing and analysis workflows demonstrated in this lab can also be done using an internal stage.
 
 ### Create a Database, Warehouse, and Stage
 Let's create a database, warehouse, and stage that will be used for loading and processing the PDFs. We will use the UI within the Worksheets tab to run the DDL that creates the database and schema. Copy the commands below into your trial environment, and execute each individually.

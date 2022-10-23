@@ -1,4 +1,4 @@
-# Resource Optimization: Performance
+# Lab 8: Resource Optimization: Performance
 
 <!-- -------------->
 

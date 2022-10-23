@@ -1,4 +1,4 @@
-# Getting Started with Time Travel
+# Lab 5: Getting Started with Time Travel
 <!-- ------------------------ -->
 ## Overview 
 

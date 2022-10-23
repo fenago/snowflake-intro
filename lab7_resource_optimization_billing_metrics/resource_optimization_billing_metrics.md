@@ -1,4 +1,4 @@
-# Resource Optimization: Billing Metrics
+# Lab 7: Resource Optimization: Billing Metrics
 
 <!-- -------------->
 

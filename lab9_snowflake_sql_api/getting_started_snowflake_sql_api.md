@@ -1,4 +1,4 @@
-# Getting Started With Snowflake SQL API
+# Lab 9: Getting Started With Snowflake SQL API
 
 <!-- ------------------------ -->
 ## Overview

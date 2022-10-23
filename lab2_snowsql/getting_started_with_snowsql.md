@@ -1,4 +1,4 @@
-# Getting Started with SnowSQL
+#  Lab 2: Getting Started with SnowSQL
 <!-- ------------------------ -->
 ## Overview 
 

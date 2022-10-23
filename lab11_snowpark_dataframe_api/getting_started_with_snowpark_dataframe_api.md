@@ -1,4 +1,4 @@
-# Getting Started with Snowpark and the Dataframe API 
+# Lab 11: Getting Started with Snowpark and the Dataframe API 
 
 <!-- ------------------------ -->
 ## Overview
@@ -70,7 +70,7 @@ All notebooks will be fully self contained, meaning that all you need for proces
 2. Starting your Local Jupyter environment
 
 
-    `jupyter lab`
+`jupyter lab`
 
     The output should be similar to the following
 

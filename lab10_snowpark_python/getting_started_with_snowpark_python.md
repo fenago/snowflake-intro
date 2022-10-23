@@ -1,4 +1,4 @@
-# Getting Started with Snowpark Python
+# Lab 10: Getting Started with Snowpark Python
 <!-- ------------------------ -->
 ## Overview 
 
@@ -7,11 +7,11 @@ Python is the language of choice for Data Science and Machine Learning workloads
 
 Snowpark includes client-side APIs and server-side runtimes that extends Snowflake to popular programming languages including Scala, Java, and Python. Ultimately, this offering provides a richer set of tools for Snowflake users (e.g. Python’s extensibility and expressiveness) while still leveraging all of Snowflake’s core features, and the underlying power of SQL, and provides a clear path to production for machine learning products and workflows.
 
-A key component of Snowpark for Python is that you can "Bring Your Own IDE"- anywhere that you can run a Python kernel, you can run client-side Snowpark Python. You can use it in your code development the exact same way as any other Python library or module. In this quickstart, we will be using Jupyter Notebooks, but you could easily replace Jupyter with any IDE of your choosing.
+A key component of Snowpark for Python is that you can "Bring Your Own IDE"- anywhere that you can run a Python kernel, you can run client-side Snowpark Python. You can use it in your code development the exact same way as any other Python library or module. In this lab, we will be using Jupyter Notebooks, but you could easily replace Jupyter with any IDE of your choosing.
 
-Throughout this quickstart, we will specifically explore the power of the Snowpark Python Dataframe API, as well as server-side Python runtime capabilities, and how Snowpark Python can enable and accelerate end-to-end Machine Learning workflows.
+Throughout this lab, we will specifically explore the power of the Snowpark Python Dataframe API, as well as server-side Python runtime capabilities, and how Snowpark Python can enable and accelerate end-to-end Machine Learning workflows.
 
-The source code for this quickstart is available on [GitHub](https://github.com/fenago/getting-started-snowpark-python).
+The source code for this lab is available on [GitHub](https://github.com/fenago/getting-started-snowpark-python).
 
 ![](./assets/image2.png)
 
@@ -50,7 +50,7 @@ To streamline your path to production, we will learn how to bring trained models
 ## Setup
 
 
-Let's set up the Python environment necessary to run this quickstart:
+Let's set up the Python environment necessary to run this lab:
 
 First, clone the source code for this repo to your local environment (you can also download the code [here](https://github.com/fenago/getting-started-snowpark-python) and unzip the files into the location of your choosing in your local environment):
 ```bash
@@ -59,7 +59,7 @@ cd getting-started-snowpark-python/customer-churn-prediction
 ```
 
 ### Snowpark Python via Anaconda
-If you are using [Anaconda](https://www.anaconda.com/python-r-distribution?utm_campaign=python&utm_medium=online-advertising&utm_source=google&utm_content=anaconda-download&gclid=Cj0KCQjwnNyUBhCZARIsAI9AYlFtPjClvSFJ8hUR4_IAtlQiDbNOm1QwqIzwf_bQvduX_OmrS8wtz5QaAhi8EALw_wcB) on your local machine, create a conda env for this quickstart:
+If you are using [Anaconda](https://www.anaconda.com/python-r-distribution?utm_campaign=python&utm_medium=online-advertising&utm_source=google&utm_content=anaconda-download&gclid=Cj0KCQjwnNyUBhCZARIsAI9AYlFtPjClvSFJ8hUR4_IAtlQiDbNOm1QwqIzwf_bQvduX_OmrS8wtz5QaAhi8EALw_wcB) on your local machine, create a conda env for this lab:
 ```bash
 conda env create -f jupyter_env.yml
 conda activate getting_started_snowpark_python
@@ -143,7 +143,7 @@ Open up the [`03-Snowpark-UDF-Deployment`](https://github.com/fenago/getting-sta
 ## Conclusion
 
 
-Through this Quickstart we were able to experience how Snowpark for Python enables you to use familiar syntax and constructs to process data where it lives with Snowflake’s elastic, scalable and secure engine, accelerating the path to production for data pipelines and ML workflows. Here’s what you were able to complete:
+Through this lab we were able to experience how Snowpark for Python enables you to use familiar syntax and constructs to process data where it lives with Snowflake’s elastic, scalable and secure engine, accelerating the path to production for data pipelines and ML workflows. Here’s what you were able to complete:
 
 - Load data into a Snowpark DataFrame
 - Clean and prepare data using the Snowpark DataFrame API

@@ -1,4 +1,4 @@
-# Getting Started with Snowflake - Zero to Snowflake
+# Lab 1: Getting Started with Snowflake - Zero to Snowflake
 
 
 <!-- ------------------------ -->
@@ -144,7 +144,10 @@ Under **Activity** there are two tabs **Query History** and **Copy History**:
 
 ![warehouses tab](assets/3UIStory_10.png)
 
-Under **Admin**, the **​Warehouses​** tab is where you set up and manage compute resources known as virtual warehouses to load or query data in Snowflake. A warehouse called COMPUTE_WH already exists in your environment.
+Under **Admin**, the **​Warehouses​** tab is where you set up and manage compute resources known as virtual warehouses to load or query data in Snowflake. If you don't see a warehouse called COMPUTE_WH in your environment, you can create it as shown below:
+
+
+![warehouses tab](assets/1.png)
 
 
 #### Resource Monitors
