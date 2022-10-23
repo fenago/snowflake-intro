@@ -54,7 +54,7 @@ Let's set up the Python environment necessary to run this quickstart:
 
 First, clone the source code for this repo to your local environment (you can also download the code [here](https://github.com/fenago/getting-started-snowpark-python) and unzip the files into the location of your choosing in your local environment):
 ```bash
-git clone git@github.com:Snowflake-Labs/sfguide-getting-started-snowpark-python.git
+git clone git@github.com:fenago/getting-started-snowpark-python.git
 cd getting-started-snowpark-python/customer-churn-prediction
 ```
 

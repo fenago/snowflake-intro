@@ -129,7 +129,7 @@ copy the data onto your table.
 
 If you have not already done so, you can download the sample files here:
 
-<button>[Download Sample Data](https://github.com/fenago/snowflake-intro/tree/master/getting-started.zip)</button>
+<button>[Download Sample Data](https://github.com/fenago/snowflake-intro/raw/master/getting-started.zip)</button>
 
 ### Stage Files With PUT
 

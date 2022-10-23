@@ -203,14 +203,6 @@ Snowpark is a brand new developer experience that brings scalable data processin
 
 We encourage you to continue with your free trial by loading your own sample or production data and by using some of the more advanced capabilities of Snowflake not covered in this lab. 
 
-### Additional Resources:
-
-- Read the [Definitive Guide to Maximizing Your Free Trial](https://www.snowflake.com/test-driving-snowflake-the-definitive-guide-to-maximizing-your-free-trial/) document
-- Attend a [Snowflake virtual or in-person event](https://www.snowflake.com/about/events/) to learn more about our capabilities and customers
-- [Join the Snowflake community](https://community.snowflake.com/s/topic/0TO0Z000000wmFQWAY/getting-started-with-snowflake)
-- [Sign up for Snowflake University](https://community.snowflake.com/s/article/Getting-Access-to-Snowflake-University)
-- [Contact our Sales Team](https://www.snowflake.com/free-trial-contact-sales/) to learn more
-
 
 ### What we've covered:
 
