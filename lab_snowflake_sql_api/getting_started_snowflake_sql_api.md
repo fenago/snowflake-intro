@@ -4,13 +4,13 @@
 ## Overview
 
 
-Welcome! The Snowflake SQL API is a [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer) that you can use to access and update data in a Snowflake database. You can use this API to execute [standard queries](https://docs.snowflake.com/en/sql-reference/constructs.html) and most [DDL](https://docs.snowflake.com/en/sql-reference/sql-ddl-summary.html) and [DML](https://docs.snowflake.com/en/sql-reference/sql-dml.html) statements.
+Welcome! The Snowflake SQL API is a [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer) that you can use to access and update data in a Snowflake database. You can use this API to execute [standard queries] and most [DDL] and [DML] statements.
 
 This getting started guide will walk you through executing a SQL statement with the API and retrieving the results. 
 
 ### Prerequisites
 
-- A familiarity with [Snowflake](https://www.youtube.com/watch?v=fEtoYweBNQ4)
+- A familiarity with Snowflake
 - A familiarity with SQL
 
 ### What You'll Learn
@@ -42,13 +42,13 @@ https://*account_locator*.snowflakecomputing.com/api/v2
 ```
 
 Negative
-: Note that the account locator might include additional segments for your region and cloud provider. See [Specifying Region Information in Your Account Hostname](https://docs.snowflake.com/en/user-guide/intro-regions.html#label-region-ids) for details.
+: Note that the account locator might include additional segments for your region and cloud provider. See [Specifying Region Information in Your Account Hostname] for details.
 
 Now let's break down the parts of the API before we begin using it. The API consists of the `/api/v2/statements/` resource and provides the following endpoints:
 
-* `/api/v2/statements`: You'll use this endpoint to [submit a SQL statement for execution](https://docs.snowflake.com/en/developer-guide/sql-api/reference.html#post-api-v2-statements).
-* `/api/v2/statements/*statementHandle*`: You'll use this endpoint to [check the status of the execution of a statement](https://docs.snowflake.com/en/developer-guide/sql-api/reference.html#get-api-v2-statements-statementhandle).
-* `/api/v2/statements/*statementHandle*/cancel`: You'll use this endpoint to [cancel the execution of a statement](https://docs.snowflake.com/en/developer-guide/sql-api/reference.html#post-api-v2-statements-statementhandle-cancel).
+* `/api/v2/statements`: You'll use this endpoint to [submit a SQL statement for execution].
+* `/api/v2/statements/*statementHandle*`: You'll use this endpoint to [check the status of the execution of a statement].
+* `/api/v2/statements/*statementHandle*/cancel`: You'll use this endpoint to [cancel the execution of a statement].
 
 In the steps to come, you shall use all these endpoints to familiarize yourself with the API. 
 
@@ -57,7 +57,7 @@ Positive
 
 ### Limitations of the SQL API
 
-It's important to be aware of the [limitations that the SQL API](https://docs.snowflake.com/en/developer-guide/sql-api/guide.html#limitations-of-the-sql-api) currently has.  In particular noting that `GET` and `PUT` are not supported.  
+It's important to be aware of the [limitations that the SQL API] currently has.  In particular noting that `GET` and `PUT` are not supported.  
 
 
 <!-- ------------------------ -->
@@ -86,7 +86,7 @@ Now let's move on to additional information you need to include in requests: aut
 
 When you send a request, the request must include authentication information. There are two options for providing authentication: OAuth and JWT key pair authentication. You can use whichever one you have previously implemented or whichever one you are most comfortable with. This example will be detailing authentication with [JWT](https://jwt.io/). 
 
-If you haven't done so already, make sure you have [key pair authentication](https://docs.snowflake.com/en/user-guide/key-pair-auth.html#configuring-key-pair-authentication) working with Snowflake already.
+If you haven't done so already, make sure you have [key pair authentication] working with Snowflake already.
 
 You can test to make sure you can successfully connect to Snowflake Key Pairs using the following command:
 
@@ -94,8 +94,6 @@ You can test to make sure you can successfully connect to Snowflake Key Pairs us
 $ snowsql -a <account> -u <user> --private-key-path <path to private key>
 ```
 
-Negative
-: If you'd rather authenticate with OAuth, please visit our documentation on authenticating with [OAuth](https://docs.snowflake.com/en/developer-guide/sql-api/guide.html#using-oauth). 
 
 After you've verified you can connect to Snowflake using key-pair authentication, you'll need to generate a JWT token.  This JWT token is time limited token which has been signed with your key and Snowflake will know that you authorized this token to be used to authenticate as you for the SQL API.
 
@@ -127,7 +125,7 @@ Now that you have been introduced to authentication and unique request IDs, you 
 ## Submitting a Request to Execute a SQL Statement
 
 
-To submit a SQL statement for execution, send a [POST request to the /api/v2/statements/ endpoint](https://docs.snowflake.com/en/developer-guide/sql-api/reference.html#post-api-v2-statements):
+To submit a SQL statement for execution, send a [POST request to the /api/v2/statements/ endpoint]:
 
 ```
 POST /api/v2/statements?requestId=<UUID> HTTP/1.1
@@ -144,7 +142,7 @@ In the request URL, you can also set query parameters to:
 
 - Execute the statement asynchronously: `async=true`
 
-For the [body of the request](https://docs.snowflake.com/en/developer-guide/sql-api/reference.html#body-of-the-post-request-to-api-v2-statements), set the following fields:
+For the [body of the request], set the following fields:
 
 - Set the `statement` field to the SQL statement that you want to execute.
 
@@ -153,7 +151,7 @@ For the [body of the request](https://docs.snowflake.com/en/developer-guide/sql-
 Negative
 : Note: the values in these fields are case-sensitive.
 
-- To set a timeout for the statement execution, set the `timeout` field to the maximum number of seconds to wait. If the `timeout` field is not set, the timeout specified by the [STATEMENT_TIMEOUT_IN_SECONDS](https://docs.snowflake.com/en/sql-reference/parameters.html#label-statement-timeout-in-seconds) parameter is used.
+- To set a timeout for the statement execution, set the `timeout` field to the maximum number of seconds to wait. If the `timeout` field is not set, the timeout specified by the [STATEMENT_TIMEOUT_IN_SECONDS] parameter is used.
 
 
 ```
@@ -180,7 +178,7 @@ Let's go over some specific fields in this request:
 
 - The `timeout` field specifies that the server allows 60 seconds for the statement to be executed.
 
-If the statement was executed successfully, Snowflake returns the HTTP response code 200 and the first results in a [ResultSet](https://docs.snowflake.com/en/developer-guide/sql-api/reference.html#resultset) object. We'll go over how to check the status and retrieve the results after we look at including bind variables.
+If the statement was executed successfully, Snowflake returns the HTTP response code 200 and the first results in a [ResultSet] object. We'll go over how to check the status and retrieve the results after we look at including bind variables.
 
 Now we'll look at how you can include bind variables (`?` placeholders) in the statement and set the `bindings` field to an object that specifies the corresponding Snowflake data types and values for each variable.
 
@@ -190,7 +188,7 @@ Now we'll look at how you can include bind variables (`?` placeholders) in the s
 
 If you want to use bind variables (`?` placeholders) in the statement, use the `bindings` field to specify the values that should be inserted.
 
-Set this field to a JSON object that specifies the [Snowflake data type](https://docs.snowflake.com/en/sql-reference/intro-summary-data-types.html) and value for each bind variable.
+Set this field to a JSON object that specifies the [Snowflake data type] and value for each bind variable.
 
 ```
 ...
@@ -207,7 +205,7 @@ Set this field to a JSON object that specifies the [Snowflake data type](https:/
 
 Choose the binding type that corresponds to the type of the value that you are binding. For example, if the value is a string representing a date (e.g. `2021-04-15`) and you want to insert the value into a DATE column, use the `TEXT` binding type.
 
-The following table specifies the values of the `type` field that you can use to bind to different [Snowflake data types](https://docs.snowflake.com/en/sql-reference/data-types.html) for this preview release.
+The following table specifies the values of the `type` field that you can use to bind to different [Snowflake data types] for this preview release.
 
 - The first column on the left specifies the binding types that you can use.
 
@@ -220,7 +218,7 @@ Negative
 
 ![binding types](assets/binding-types.png)
 
-For additional information on binding specific data types, see the documentation's section on [Using Bind Variables in a Statement](https://docs.snowflake.com/en/developer-guide/sql-api/reference.html#resultset)
+For additional information on binding specific data types, see the documentation's section on [Using Bind Variables in a Statement]
 
 If the value is in a format not supported by Snowflake, the API returns an error:
 
@@ -241,7 +239,7 @@ Whether you use bind variables or not, you'll want to check the status of your s
 
 When you submit a SQL statement for execution, Snowflake returns a 202 response code if the execution of the statement has not yet been completed or if you submitted an asynchronous query.
 
-In the body of the response, Snowflake includes a [QueryStatus](https://docs.snowflake.com/en/developer-guide/sql-api/reference.html#querystatus) object. The `statementStatusUrl` field in this object specifies the URL to the [/api/v2/statements/<statementHandle> endpoint](https://docs.snowflake.com/en/developer-guide/sql-api/reference.html#get-api-v2-statements-statementhandle) that you can use to check the execution status:
+In the body of the response, Snowflake includes a [QueryStatus] object. The `statementStatusUrl` field in this object specifies the URL to the [/api/v2/statements/<statementHandle> endpoint] that you can use to check the execution status:
 
 ```
 {
@@ -274,13 +272,13 @@ User-Agent: myApplication/1.0
 X-Snowflake-Authorization-Token-Type: KEYPAIR_JWT
 ```
 
-If the statement has finished executing successfully, Snowflake returns the HTTP response code 200 and the first results in a [ResultSet](https://docs.snowflake.com/en/developer-guide/sql-api/reference.html#resultset) object. However, if an error occurred when executing the statement, Snowflake returns the HTTP response code 422 with a [QueryFailureStatus](https://docs.snowflake.com/en/developer-guide/sql-api/reference.html#queryfailurestatus) object.
+If the statement has finished executing successfully, Snowflake returns the HTTP response code 200 and the first results in a [ResultSet] object. However, if an error occurred when executing the statement, Snowflake returns the HTTP response code 422 with a [QueryFailureStatus] object.
 
 Once the statement has executed successfully, you can then retrieve the results, detailed in the next step.
 
 ### Cancelling the Execution of a SQL Statement
 
-To cancel the execution of a statement, send a POST request to the [cancel endpoint](https://docs.snowflake.com/en/developer-guide/sql-api/guide.html#cancelling-the-execution-of-a-sql-statement).
+To cancel the execution of a statement, send a POST request to the [cancel endpoint].
 
 ```
 POST /api/v2/statements/{statementHandle}/cancel
@@ -290,7 +288,7 @@ POST /api/v2/statements/{statementHandle}/cancel
 ## Retrieving the Results
 
 
-If you [submit a SQL statement for execution](https://docs.snowflake.com/en/developer-guide/sql-api/guide.html#label-sql-api-executing-multiple-statements) or [check the status of statement execution](https://docs.snowflake.com/en/developer-guide/sql-api/guide.html#checking-the-status-of-the-statement-execution-and-retrieving-the-data), Snowflake returns a [ResultSet](https://docs.snowflake.com/en/developer-guide/sql-api/guide.html#checking-the-status-of-the-statement-execution-and-retrieving-the-data) object in the body of the response if the statement was executed successfully.
+If you [submit a SQL statement for execution] or [check the status of statement execution], Snowflake returns a [ResultSet] object in the body of the response if the statement was executed successfully.
 
 The following is an example of a `ResultSet` object that is returned for a query, truncated for brevity.
 
@@ -364,9 +362,9 @@ Notice that there is an `ARRAY` of `partitionInfo` objects.  These partitions ob
 
 It also includes, in the response the `rowType` which gives additional metadata about the datatypes and names of data returned from the query.  This metadata is only included in the initial response, and no metadata is returned when retrieving subsequent partitions.
 
-In the `ResultSet` object returned in the response, the `resultSetMetaData` field contains a [`ResultSet_resultSetMetaData`](https://docs.snowflake.com/en/developer-guide/sql-api/guide.html#getting-metadata-about-the-results) object that describes the result set (for example, the format of the results, etc.).
+In the `ResultSet` object returned in the response, the `resultSetMetaData` field contains a [`ResultSet_resultSetMetaData`] object that describes the result set (for example, the format of the results, etc.).
 
-In this object, the `rowType` field contains an array of [ResultSet_resultSetMetaData_rowType](https://docs.snowflake.com/en/developer-guide/sql-api/reference.html#label-sql-api-reference-resultset-resultsetmetadata-rowtype) objects. Each object describes a column in the results. The `type` field specifies the Snowflake data type of the column.
+In this object, the `rowType` field contains an array of [ResultSet_resultSetMetaData_rowType] objects. Each object describes a column in the results. The `type` field specifies the Snowflake data type of the column.
 
 ```
 {
@@ -415,7 +413,7 @@ In this object, the `rowType` field contains an array of [ResultSet_resultSetMet
 
 ### Retrieving Result Partitions
 
-Partitions are [retrieved](https://docs.snowflake.com/en/developer-guide/sql-api/guide.html#retrieving-additional-partitions) using the `partition=n` query parameter at `/api/v2/statements/<handle>?partition=<partition_number>` endpoint.  This can be used to iterate, or even retrieve in parallel, the results from the SQL API call.
+Partitions are [retrieved] using the `partition=n` query parameter at `/api/v2/statements/<handle>?partition=<partition_number>` endpoint.  This can be used to iterate, or even retrieve in parallel, the results from the SQL API call.
 
 ```
 GET /api/v2/statements/e4ce975e-f7ff-4b5e-b15e-bf25f59371ae?partition=1 HTTP/1.1
@@ -454,7 +452,7 @@ You are responsible for converting the strings to the appropriate data types.
 
 Since your results may contain significant number of partitions, the Snowflake SQL API provides a special header, `Link`, which assists in helping clients traverse and retrieve those results.  
 
-To get the next parition of results or other partitions, use the URLs provided in the [Link header](https://docs.snowflake.com/en/developer-guide/sql-api/reference.html#response-headers-for-all-operations) in the HTTP response. The `Link` header specifies the URLs for retrieving the first, next, previous, and last partitions of results:
+To get the next parition of results or other partitions, use the URLs provided in the [Link header] in the HTTP response. The `Link` header specifies the URLs for retrieving the first, next, previous, and last partitions of results:
 
 ```
 HTTP/1.1 200 OK
@@ -471,7 +469,7 @@ Link: </api/v2/statements/01a288b9-0603-af68-0000-328502422e7e?requestId=918e221
 
 
 
-This tutorial was designed as a hands-on introduction to the Snowflake SQL API. To see what else you can do with the API, check out the [Snowflake SQL API Reference](https://docs.snowflake.com/en/developer-guide/sql-api/reference.html).
+This tutorial was designed as a hands-on introduction to the Snowflake SQL API. To see what else you can do with the API, check out the [Snowflake SQL API Reference].
 
 If you've completed this lab using the Snowflake free trial, we encourage you to continue exploring what Snowflake can help you accomplish. There are several ways Snowflake can help you with this:
 

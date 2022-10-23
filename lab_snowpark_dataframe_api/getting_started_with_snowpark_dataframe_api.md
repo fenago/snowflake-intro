@@ -6,9 +6,9 @@
 
 ![](assets/stock_small.jpg)
 
-This project will demonstrate how to get started with Jupyter Notebooks on [Snowpark](https://docs.snowflake.com/en/developer-guide/snowpark/index.html), a new product feature announced by Snowflake for [public preview](https://www.snowflake.com/blog/welcome-to-snowpark-new-data-programmability-for-the-data-cloud/) during the 2021 Snowflake Summit. With this tutorial you will learn how to tackle real world business problems as straightforward as ELT processing but also as diverse as math with rational numbers with unbounded precision, sentiment analysis and machine learning.
+This project will demonstrate how to get started with Jupyter Notebooks on [Snowpark], a new product feature announced by Snowflake for [public preview]during the 2021 Snowflake Summit. With this tutorial you will learn how to tackle real world business problems as straightforward as ELT processing but also as diverse as math with rational numbers with unbounded precision, sentiment analysis and machine learning.
 
-Snowpark not only works with Jupyter Notebooks but with a variety of IDEs. Instructions on how to set up your favorite development environment can be found in the Snowpark documentation under [Setting Up Your Development Environment for Snowpark](https://docs.snowflake.com/en/developer-guide/snowpark/setup.html).
+Snowpark not only works with Jupyter Notebooks but with a variety of IDEs. Instructions on how to set up your favorite development environment can be found in the Snowpark documentation under [Setting Up Your Development Environment for Snowpark].
 
 ### Snowpark
 Snowpark is a new developer framework of Snowflake. It brings deeply integrated, DataFrame-style programming to the languages developers like to use, and functions to help you expand more data use cases easily, all executed inside of Snowflake. Snowpark support starts with Scala API, Java UDFs, and External Functions.  
@@ -32,7 +32,7 @@ The following tutorial highlights these benefits and lets you experience Snowpar
 
 ### Prerequisites:
 
-This [repo](https://github.com/Snowflake-Labs/sfguide_snowpark_on_jupyter) is structured in multiple parts. Each part has a notebook with specific focus areas. All notebooks in this series require a Jupyter Notebook environment with a Scala kernel.  
+This [repo](https://github.com/fenago/snowpark_on_jupyter) is structured in multiple parts. Each part has a notebook with specific focus areas. All notebooks in this series require a Jupyter Notebook environment with a Scala kernel.  
 
 All notebooks will be fully self contained, meaning that all you need for processing and analyzing datasets is a Snowflake account.  If you do not have a Snowflake account, you can sign up for a [free trial](https://signup.snowflake.com/). It doesn't even require a credit card.
 
@@ -40,19 +40,19 @@ All notebooks will be fully self contained, meaning that all you need for proces
 - Use of the [Snowflake free 30-day trial environment](https://trial.snowflake.com)
 - All notebooks in this series require a Jupyter Notebook environment with a Scala kernel.  
   - If you do not already have access to that type of environment, Follow the instructions below to either run Jupyter locally or in the AWS cloud. 
-- Instructions on how to set up your favorite development environment can be found in the Snowpark documentation under [Setting Up Your Development Environment for Snowpark](https://docs.snowflake.com/en/developer-guide/snowpark/setup.html).
+- Instructions on how to set up your favorite development environment can be found in the Snowpark documentation under [Setting Up Your Development Environment for Snowpark].
 
 
 ### What you will learn
-- [Part 1](https://github.com/Snowflake-Labs/sfguide_snowpark_on_jupyter/blob/main/notebook/part1/part1.ipynb)
+- [Part 1](https://github.com/fenago/snowpark_on_jupyter/blob/main/notebook/part1/part1.ipynb)
 
     The first notebook in this series provides a quick-start guide and an introduction to the Snowpark DataFrame API. The notebook explains the steps for setting up the environment (REPL), and how to resolve dependencies to Snowpark. After a simple "Hello World" example you will learn about the Snowflake DataFrame API, projections, filters, and joins.
  
-- [Part 2](https://github.com/Snowflake-Labs/sfguide_snowpark_on_jupyter/blob/main/notebook/part2/part2.ipynb)
+- [Part 2](https://github.com/fenago/snowpark_on_jupyter/blob/main/notebook/part2/part2.ipynb)
 
     The second notebook in the series builds on the quick-start of the first part. Using the TPCH dataset in the sample database, it shows how to use aggregations and pivot functions in the Snowpark DataFrame API. Then it introduces UDFs and how to build a stand-alone UDF: a UDF that only uses standard primitives. From there, we will learn how to use third party Scala libraries to perform much more complex tasks like math for numbers with unbounded (unlimited number of significant digits) precision and how to perform sentiment analysis on an arbitrary string.
 
-- [Part 3](https://github.com/Snowflake-Labs/sfguide_snowpark_on_jupyter/blob/main/notebook/part3/part3.ipynb)
+- [Part 3](https://github.com/fenago/snowpark_on_jupyter/blob/main/notebook/part3/part3.ipynb)
 
     The third notebook combines what you learned in part 1 and 2. It implements an end-to-end ML use case including data ingestion, ETL/ELT transformations, model training, model scoring, and result visualization.
 
@@ -71,12 +71,12 @@ The following instructions show how to build a Notebook server using a Docker co
 
 4. Open your favorite terminal or command line tool / shell.
 
-5. Clone the GitHub Lab [repo](https://github.com/Snowflake-Labs/sfguide_snowpark_on_jupyter): 
+5. Clone the GitHub Lab [repo](https://github.com/fenago/snowpark_on_jupyter): 
         cd ~
         mkdir DockerImages
 
         cd DockerImages
-        git clone https://github.com/Snowflake-Labs/sfguide_snowpark_on_jupyter.git
+        git clone https://github.com/fenago/snowpark_on_jupyter.git
 
 6. Build the Docker container (this may take a minute or two, depending on your network connection speed)
 
@@ -126,7 +126,7 @@ In case you can't install docker on your local machine you could run the tutoria
 
    ![Create Policy](assets/create_lifecycle_policy.png)
 
-   Open the [lifecycle script](https://github.com/Snowflake-Labs/sfguide_snowpark_on_jupyter/blob/main/docker/onstart) and paste its content into the editor window.
+   Open the [lifecycle script](https://github.com/fenago/snowpark_on_jupyter/blob/main/docker/onstart) and paste its content into the editor window.
     
    Creating the Notebook takes about 8 minutes.
 
@@ -146,14 +146,14 @@ Positive
 
 
 
-First, we have to set up the Jupyter environment for our notebook. The full instructions for setting up the environment are in the Snowpark documentation [Configure Jupyter](https://docs.snowflake.com/en/developer-guide/snowpark/quickstart-jupyter.html#configuring-the-jupyter-notebook-for-snowpark).
+First, we have to set up the Jupyter environment for our notebook. The full instructions for setting up the environment are in the Snowpark documentation [Configure Jupyter].
 
 
 #### Setup your credentials file
 
 To create a Snowflake session, we need to authenticate to the Snowflake instance. Though it might be tempting to just override the authentication variables with hard coded values in your Jupyter notebook code, it's not considered best practice to do so. If you share your version of the notebook, you might disclose your credentials by mistake to the recipient. Even worse, if you upload your notebook to a public code repository, you might advertise your credentials to the whole world. To prevent that, you should keep your credentials in an external file (like we are doing here).
 
-Then, update your credentials in that file and they will be saved on your local machine. Even better would be to switch from user/password authentication to [private key authentication](https://docs.snowflake.com/en/user-guide/key-pair-auth.html#key-pair-authentication-key-pair-rotation).
+Then, update your credentials in that file and they will be saved on your local machine. Even better would be to switch from user/password authentication to [private key authentication].
 
 Positive
 :  Put your key pair files into the same directory or update the location in your credentials file.

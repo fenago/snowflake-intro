@@ -28,7 +28,7 @@ Luckily, streaming data is one of the [use-cases](https://www.snowflake.com/clou
 
 * how to build basic objects and write ELT code for it
 
-* how to leverage [Snowpipe](https://docs.snowflake.com/en/user-guide/data-load-snowpipe-intro.html) and [Continous Data Pipelines](https://docs.snowflake.com/en/user-guide/data-pipelines.html) to automate data processing
+* how to leverage [Snowpipe] and [Continous Data Pipelines] to automate data processing
 
 * how to apply data virtualization to accellerate data access
 
@@ -65,9 +65,9 @@ Architecturally, we will split the data lifecycle into following layers:
 1. Login to your Snowflake trial account.  
 ![Snowflake Log In Screen](assets/img4.png)  
 
-2. First page you are going to see would likely be [Snowflake Classic UI](https://docs.snowflake.com/en/user-guide/ui-using.html):
+2. First page you are going to see would likely be [Snowflake Classic UI]:
 ![Snowflake Classic UI](assets/img7.png)   
-To keep things interesting, for the purpose of this lab let's use [Snowflake New Web Interface](https://docs.snowflake.com/en/user-guide/ui-web.html) also known as Snowsight. However, you absolutely can continue using Classic UI as all steps in this guide are expressed in SQL and will work regardless what interface is used.
+To keep things interesting, for the purpose of this lab let's use [Snowflake New Web Interface] also known as Snowsight. However, you absolutely can continue using Classic UI as all steps in this guide are expressed in SQL and will work regardless what interface is used.
 To switch into Snowsight, let's click the **Preview** button in the top-right corner:
 
 ![Snowflake New UI](assets/img5.png)   
@@ -86,7 +86,7 @@ And without going into too much details, this is a fairly intuitive SQL workbenc
 
 4. We are going to start by setting up basics for the lab environment. Creating a clean database and logically dividing it into four different schemas, representing each functional area mentioned in the reference architecture. 
 
-To keep things simple, we are going to use the ACCOUNTADMIN role (thou, of course in the real life examples you would employ a proper RBAC model). We also going to create two [Snowflake virtual warehouses](https://docs.snowflake.com/en/user-guide/warehouses.html) to manage compute - one for generic use during the course of this lab and the other one (dv_rdv_wh) that is going to be used by our data pipelines. You might notice that the code for two more virtual warehouses (dv_bdv_wh, dv_id_wh) is commented - again, this is just to keep things simple for the guide but we wanted to illustrate the fact you can have as many of virtual warehouses of any size and configuration as you needed. For example having separate ones to deal with different layers in our Data Vault architecture.
+To keep things simple, we are going to use the ACCOUNTADMIN role. We also going to create two [Snowflake virtual warehouses] to manage compute - one for generic use during the course of this lab and the other one (dv_rdv_wh) that is going to be used by our data pipelines. You might notice that the code for two more virtual warehouses (dv_bdv_wh, dv_id_wh) is commented - again, this is just to keep things simple for the guide but we wanted to illustrate the fact you can have as many of virtual warehouses of any size and configuration as you needed. For example having separate ones to deal with different layers in our Data Vault architecture.
 
 
 ```sql
@@ -119,17 +119,17 @@ CREATE OR REPLACE SCHEMA l30_id  COMMENT = 'Schema for Information Delivery obje
 
 ![dbt_project.yml](assets/img2.png)  
 
-Snowflake supports multiple options for engineering data pipelines. In this post we are going to show one of the most efficient ways to implement incremental NRT integration leveraging Snowflake [Continuous Data Pipelines](https://docs.snowflake.com/en/user-guide/data-pipelines.html).  Let's take a look at the architecture diagram above to understand how it works. 
+Snowflake supports multiple options for engineering data pipelines. In this post we are going to show one of the most efficient ways to implement incremental NRT integration leveraging Snowflake [Continuous Data Pipelines].  Let's take a look at the architecture diagram above to understand how it works. 
 
-Snowflake has a special [stream](https://docs.snowflake.com/en/user-guide/streams.html) object that tracks all data changes on a table (inserts, updates, and deletes). This process is 100% automatic and unlike traditional databases will never impact the speed of data loading. The change log from a stream is automatically ‘consumed’ once there is a successfully completed DML operation using the stream object as a source. 
+Snowflake has a special [stream] object that tracks all data changes on a table (inserts, updates, and deletes). This process is 100% automatic and unlike traditional databases will never impact the speed of data loading. The change log from a stream is automatically ‘consumed’ once there is a successfully completed DML operation using the stream object as a source. 
 
-So, loading new data into a staging table, would immediately be reflected in a stream showing the [‘delta’](https://docs.snowflake.com/en/user-guide/streams.html#data-flow) that requires processing.
+So, loading new data into a staging table, would immediately be reflected in a stream showing the [‘delta’] that requires processing.
 
-The second component we are going to use is [tasks](https://docs.snowflake.com/en/user-guide/tasks-intro.html). It is a Snowflake managed data processing unit that will wake up on a defined interval (e.g., every 1-2 min), check if there is any data in the associated stream and if so, will run SQL to push it to the Raw Data Vault objects. Tasks could be arranged in a [tree-like dependency graph](https://docs.snowflake.com/en/user-guide/tasks-intro.html#simple-tree-of-tasks), executing child tasks the moment the predecessor finished its part. 
+The second component we are going to use is [tasks]. It is a Snowflake managed data processing unit that will wake up on a defined interval (e.g., every 1-2 min), check if there is any data in the associated stream and if so, will run SQL to push it to the Raw Data Vault objects. Tasks could be arranged in a [tree-like dependency graph], executing child tasks the moment the predecessor finished its part. 
 
-Last but not least, following Data Vault 2.0 best practices for NRT data integration (to load data in parallel) we are going to use Snowflake’s [multi-table insert (MTI)](https://docs.snowflake.com/en/sql-reference/sql/insert-multi-table.html) inside tasks to populate multiple Raw Data Vault objects by a single DML command. (Alternatively you can create multiple streams & tasks from the same table in stage in order to populate each data vault object by its own asynchronous flow.) 
+Last but not least, following Data Vault 2.0 best practices for NRT data integration (to load data in parallel) we are going to use Snowflake’s [multi-table insert (MTI)] inside tasks to populate multiple Raw Data Vault objects by a single DML command. (Alternatively you can create multiple streams & tasks from the same table in stage in order to populate each data vault object by its own asynchronous flow.) 
 
-Next step, you assign tasks to one or many virtual warehouses. This means you always have enough [compute power](https://docs.snowflake.com/en/user-guide/warehouses-overview.html#warehouse-size) (XS to 6XL) to deal with any size workload, whilst the [multi-cluster virtual warehouse](https://docs.snowflake.com/en/user-guide/warehouses-multicluster.html#multi-cluster-warehouses) option will automatically scale-out and load balance all the tasks as you introduce more hubs, links and satellites to your vault. 
+Next step, you assign tasks to one or many virtual warehouses. This means you always have enough [compute power] (XS to 6XL) to deal with any size workload, whilst the [multi-cluster virtual warehouse] option will automatically scale-out and load balance all the tasks as you introduce more hubs, links and satellites to your vault. 
 
 Talking about tasks, Snowflake just introduced another fantastic capability - serverless tasks. This enables you to rely on compute resources managed by Snowflake instead of user-managed virtual warehouses. These compute resources are automatically resized and scaled up and down by Snowflake as required by each workload. This feature will be out of scope for this guide, but serverless compute model could reduce compute costs, in some cases significantly, allowing you to process more data, faster with even less management. 
 
@@ -141,8 +141,8 @@ Following this approach will result in a hands-off production data pipeline that
 ## Sample data & staging area
 
 
-Every Snowflake account provides access to [sample data sets](https://docs.snowflake.com/en/user-guide/sample-data.html). You can find corresponding schemas in SNOWFLAKE_SAMPLE_DATA database in your object explorer.
-For this guide we are going to use a subset of objects from [TPC-H](https://docs.snowflake.com/en/user-guide/sample-data-tpch.html) set, representing **customers** and their **orders**. We also going to take some reference data about **nations** and **regions**. 
+Every Snowflake account provides access to [sample data sets]. You can find corresponding schemas in SNOWFLAKE_SAMPLE_DATA database in your object explorer.
+For this guide we are going to use a subset of objects from [TPC-H] set, representing **customers** and their **orders**. We also going to take some reference data about **nations** and **regions**. 
 
 <table>
     <tbody>
@@ -208,7 +208,7 @@ SELECT src.*
   FROM snowflake_sample_data.tpch_sf10.region src;
 ```
 
-2. Next, let's create staging tables for our data loading. This syntax should be very familiar with anyone working with databases before. It is ANSI SQL compliant DDL, with probably one key exception - for stg_customer we are going to load the full payload of JSON into raw_json column. For this, Snowflake has a special data type [VARIANT](https://docs.snowflake.com/en/sql-reference/data-types-semistructured.html). 
+2. Next, let's create staging tables for our data loading. This syntax should be very familiar with anyone working with databases before. It is ANSI SQL compliant DDL, with probably one key exception - for stg_customer we are going to load the full payload of JSON into raw_json column. For this, Snowflake has a special data type [VARIANT]. 
 
 As we load data we also going to add some technical metadata, like load data timestamp, row number in a file. 
 
@@ -241,7 +241,7 @@ CREATE OR REPLACE TABLE stg_orders
 ```
 
 3. Tables we just created are going to be used by Snowpipe to drip-feed the data as it is lands in the stage. 
-In order to easily detect and incrementally process the new portion of data we are going to create [streams](https://docs.snowflake.com/en/user-guide/streams.html) on these staging tables:
+In order to easily detect and incrementally process the new portion of data we are going to create [streams] on these staging tables:
 
 ```sql
 CREATE OR REPLACE STREAM stg_customer_strm ON TABLE stg_customer;
@@ -258,7 +258,7 @@ CREATE OR REPLACE STAGE orders_data   FILE_FORMAT = (TYPE = CSV) ;
 ```
 
 5. Generate and unload sample data. There are couple of things going on. 
-First, we are using [object_construct](https://docs.snowflake.com/en/sql-reference/functions/object_construct.html) as a quick way to create a object/document from all columns and subset of rows for customer data and offload it into customer_data stage. Orders data would be extracted into compressed CSV files. There are many additonal options in [COPY INTO stage](https://docs.snowflake.com/en/sql-reference/sql/copy-into-location.html) construct that would fit most requirements, but in this case we are using INCLUDE_QUERY_ID to make it easier to generate new incremental files as we are going to run these commands over and over again, without a need to deal with file overriding. 
+First, we are using [object_construct] as a quick way to create a object/document from all columns and subset of rows for customer data and offload it into customer_data stage. Orders data would be extracted into compressed CSV files. There are many additonal options in [COPY INTO stage] construct that would fit most requirements, but in this case we are using INCLUDE_QUERY_ID to make it easier to generate new incremental files as we are going to run these commands over and over again, without a need to deal with file overriding. 
 
 ```sql
 

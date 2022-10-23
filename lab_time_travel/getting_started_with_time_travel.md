@@ -6,9 +6,7 @@
 Panic hits when you mistakenly delete data. Problems can come from a mistake that disrupts a process, or worse, the whole database was deleted. Thoughts of how recent was the last backup and how much time will be lost might have you wishing for a rewind button. Straightening out your database isn’t a disaster to recover from with Snowflake’s Time Travel. A few SQL commands allow you to go back in time and reclaim the past, saving you from the time and stress of a more extensive restore.
 
 We’ll get started in the Snowflake web console, configure data retention, and use Time Travel to retrieve historic data. Before querying for your previous database states, let’s review the prerequisites for this guide.
-### Prerequisites
-- Quick Video [Introduction to Snowflake](https://www.youtube.com/watch?v=fEtoYweBNQ4&ab_channel=SnowflakeInc.)
-- Snowflake [Data Loading Basics](https://www.youtube.com/watch?v=us6MChC8T9Y&ab_channel=SnowflakeInc.) Video
+
 
 ### What You’ll Learn 
 - Snowflake account and user permissions
@@ -40,7 +38,7 @@ Snowflake lets you try out their services for free with a [trial account](https:
 
 `https://<account-name>.snowflakecomputing.com/console/login`
     
-Log in to the web interface on your browser. The URL contains your [account name](https://docs.snowflake.com/en/user-guide/connecting.html#your-snowflake-account-name) and potentially the region.
+Log in to the web interface on your browser. The URL contains your [account name] and potentially the region.
 
 ### Increase Your Account Permission
 
@@ -93,13 +91,13 @@ alter table timeTravel_table set data_retention_time_in_days=55;
 
 The command above changes the table’s data retention period to 55 days. If you opted for a **Standard** account, your data retention period is limited to the default of one day. An **Enterprise** account allows for 90 days of preservation in Time Travel.
 
-Now you know how easy it is to [alter](https://docs.snowflake.com/en/sql-reference/sql/alter-table.html#alter-table) your data retention, let’s bend the rules of time by querying an old database state with Time Travel.
+Now you know how easy it is to [alter] your data retention, let’s bend the rules of time by querying an old database state with Time Travel.
 
 <!-- ------------------------ -->
 ## Query Your Time Travel Data
 
 
-With your data retention period specified, let’s turn back the clock with the `AT` and `BEFORE` [clauses](https://docs.snowflake.com/en/sql-reference/constructs/at-before.html#at-before).
+With your data retention period specified, let’s turn back the clock with the `AT` and `BEFORE` [clauses].
 
 ### At
 

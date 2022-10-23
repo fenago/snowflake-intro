@@ -3,14 +3,13 @@
 ## Overview 
 
 
-This Quickstart is designed to help you understand the capabilities included in Snowflake’s support for unstructured data and Snowpark. Although this guide is specific to processing DICOM files, you can apply this pattern of processing natively in Snowflake to many types of unstructured data. All source code for this guide can be found on [Github](https://github.com/Snowflake-Labs/sfquickstarts).
+This Quickstart is designed to help you understand the capabilities included in Snowflake’s support for unstructured data and Snowpark. Although this guide is specific to processing DICOM files, you can apply this pattern of processing natively in Snowflake to many types of unstructured data. All source code for this guide can be found on [Github](https://github.com/fenago/snowflake-intro).
 
-### Prerequisites
-- Completion of [Getting Started with Unstructured Data](http://quickstarts.snowflake.com/guide/getting_started_with_unstructured_data/index.html?index=..%2F..index)
+
 
 ### What You'll Need
 - Snowflake account
-- [SnowSQL](https://docs.snowflake.com/en/user-guide/snowsql.html) installed
+- [SnowSQL] installed
 
 ### What You’ll Learn 
 - How to access DICOM files in cloud storage from Snowflake
@@ -41,8 +40,8 @@ For this lab, you will use the latest Snowflake web interface, Snowsight.
 
 
 Let’s start by accessing DICOM files from Snowflake. Snowflake supports two types of stages for storing data files used for loading and unloading:
-- [Internal](https://docs.snowflake.com/en/user-guide/data-load-overview.html#internal-stages) stages store the files internally within Snowflake.
-- [External](https://docs.snowflake.com/en/user-guide/data-load-overview.html#external-stages) stages store the files in an external location (i.e. S3 bucket) that is referenced by the stage. An external stage specifies location and credential information, if required, for the bucket.
+- [Internal] stages store the files internally within Snowflake.
+- [External] stages store the files in an external location (i.e. S3 bucket) that is referenced by the stage. An external stage specifies location and credential information, if required, for the bucket.
 
 For this quickstart, we will use an external stage, but processing and analysis workflows demonstrated in this quickstart can also be done using an internal stage.
 
@@ -248,8 +247,3 @@ Congratulations! You used Snowflake to extract attributes from DICOM files.
 - Accessing unstructured data with an __external stage__
 - Processing unstructured data with a __Java UDF__
 
-### Related Resources
-- [Quickstart: Analyze PDF Invoices using Java UDF and Snowsight](https://quickstarts.snowflake.com/guide/analyze_pdf_invoices_java_udf_snowsight/index.html?index=..%2F..index#0)
-- [Unstructured Data Docs](https://docs.snowflake.com/en/user-guide/unstructured.html)
-- [Java UDF Docs](https://docs.snowflake.com/en/developer-guide/udf/java/udf-java.html)
-- [Snowpark Docs](https://docs.snowflake.com/en/developer-guide/snowpark/index.html)

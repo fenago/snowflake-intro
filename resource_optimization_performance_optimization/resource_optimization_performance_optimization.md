@@ -16,7 +16,7 @@ The queries provided in this guide are intended to help you setup and run querie
   
 ### What You’ll Need 
 - A [Snowflake](https://www.snowflake.com/) Account 
-- Access to view [Account Usage Data Share](https://docs.snowflake.com/en/sql-reference/account-usage.html#enabling-account-usage-for-other-roles)
+- Access to view [Account Usage Data Share]
 
 ### Related Materials
 - Resource Optimization: Setup & Configuration
